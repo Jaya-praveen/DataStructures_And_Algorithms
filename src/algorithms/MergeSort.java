@@ -4,14 +4,24 @@ public class MergeSort {
 
     public static void main(String[] args){
         int[] arr = { 10, 7, 8, 1, 9, 5 };
-
+        int n=arr.length;
         System.out.println("Given array is");
         printArray(arr);
 
-        sort(arr, 0, arr.length - 1);
+//        region mergessort
+//        sort(arr, 0, arr.length - 1);
+//        endregion
+
+//        region inplacemergesort
+        inplacemergesort(arr,0,n-1);
+//        endregion
+
+
+
 
         System.out.println("\nSorted array is");
         printArray(arr);
+
 
     }
     public static void  printArray(int[] arr){
@@ -56,6 +66,41 @@ public class MergeSort {
             k++;
         }
     }
+
+    public static void inplacemergesort(int[] arr, int l, int r) {
+        if(l<r){
+            int m = l+(r-l)/2;
+            inplacemergesort(arr,l,m);
+            inplacemergesort(arr,m+1,r);
+            if(arr[m] <= arr[m +1]){
+                return;
+            }
+            inplacemerge(arr,l,m,r);
+        }
+    }
+
+    private static void inplacemerge(int[] arr, int l, int m, int r) {
+        int start1 = l;
+        int start2 = m+1;
+        while(start1 <=m && start2 <=r){
+            if (arr[start1] <= arr[start2]){
+                    start1++;
+            }
+            else{
+                int temp = arr[start2];
+                int i =start2;
+                while(i>start1){
+                    arr[i] =arr[i-1];
+                    i=i-1;
+                }
+                arr[start1]= temp;
+                start1++;
+                m++;
+                start2++;
+            }
+        }
+    }
+
     public static void sort(int[] arr, int l, int r){
         if(l < r){
             
