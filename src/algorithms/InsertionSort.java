@@ -29,7 +29,6 @@ public class InsertionSort {
 
         //region shell_insertion_sort
 //        System.out.println("using shell_insertion_sort");
-
 //        shellsort(arr);
         //endregion
 
