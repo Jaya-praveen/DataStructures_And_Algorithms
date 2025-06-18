@@ -67,6 +67,7 @@ public class parray {
         System.out.println(Arrays.stream(arr2).max().getAsInt());
         Arrays.setAll(arr2,i->arr2[i]*2);
         System.out.println(Arrays.toString(arr2));
+        System.out.println(arr2.getClass());
 
 
 
