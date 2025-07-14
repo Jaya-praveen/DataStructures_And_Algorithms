@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Objects;
+
 public class Employee {
 
     private long id;
@@ -43,5 +45,19 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", salary=" + salary +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(!(o instanceof Employee)) return false;
+        Employee employee=(Employee) o;
+        return id == employee.getID() && Objects.equals(name,employee.getName());
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(id,name);
     }
 }
