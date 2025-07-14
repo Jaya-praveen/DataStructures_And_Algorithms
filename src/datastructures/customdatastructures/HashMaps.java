@@ -3,11 +3,11 @@ package datastructures.customdatastructures;
 import utils.Employee;
 import utils.StoredEmployee;
 
-public class HashMaps<E> {
+public class HashMaps {
 
     private StoredEmployee[] hashTable ;
 
-    public HashMaps(int capacity){
+    public HashMaps(){
 
         this.hashTable = new StoredEmployee[10];
     }
@@ -50,6 +50,14 @@ public class HashMaps<E> {
         }
         Employee employee = hashTable[hashedKey].employee;
         hashTable[hashedKey] = null;
+
+        StoredEmployee[] oldHashtable = hashTable;
+        hashTable = new StoredEmployee[oldHashtable.length];
+        for(int i=0;i<oldHashtable.length;i++) {
+            if (oldHashtable[i] != null) {
+                put(oldHashtable[i].key, oldHashtable[i].employee);
+            }
+        }
         return employee;
     }
 
@@ -77,11 +85,44 @@ public class HashMaps<E> {
        return hashTable[key]!=null;
     }
 
-    public int hashKey(String key){
+    private int hashKey(String key){
         return key.length()%hashTable.length;
     }
 
+    public void printHashTable(){
+        for(int i=0;i<hashTable.length;i++){
+            if(hashTable[i] == null) {
+                System.out.println("empty");
+            }
+            else{
+                System.out.println("Position "+ i+"; "+hashTable[i].employee);
+            }
+        }
+    }
+
     public static void main(String[] args) {
+
+        Employee emp1 = new Employee(122,"Harvey Spector",63000);
+        Employee emp2 = new Employee(123,"Mike Ross",80000);
+        Employee emp3 = new Employee(124,"Jessica Pearson",75000);
+        Employee emp4 = new Employee(125,"rachel Zane",50000);
+        Employee emp5 = new Employee(126,"Lious Litt",50000);
+
+        HashMaps ht = new HashMaps();
+        ht.put("harvey",emp1);
+        ht.put("Mike",emp2);
+        ht.put("Jessica",emp3);
+        ht.put("Rachel",emp4);
+
+        ht.printHashTable();
+
+        System.out.println("Retrieve key harvey "+ ht.get("harvey"));
+        System.out.println("Retrieve key rachel"+ht.get("Rachel"));
+
+        ht.remove("Mike");
+        ht.remove("Jessica");
+        ht.printHashTable();
+
 
 
     }
