@@ -27,11 +27,11 @@ public class pSet {
 
         System.out.println("check empty "+set.isEmpty());
 
-        System.out.println("\n iterating using iterator()");
-        Iterator<Employee> itr =new set.iterator();
-        while(itr.hasNext()){
-            System.out.println(itr.next());
-        }
+//        System.out.println("\n iterating using iterator()");
+//        Iterator<Employee> itr =new set.iterator();
+//        while(itr.hasNext()){
+//            System.out.println(itr.next());
+//        }
 
         set.remove(emp2);
         System.out.println("\n r3emoved bob");
