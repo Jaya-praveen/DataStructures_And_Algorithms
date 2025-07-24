@@ -100,7 +100,6 @@ public class pStream {
                 .collect(Collectors.toList());
         System.out.println("value is "+limitstring);
 
-        //skip(n) skips for n elemetns
         List<String> skippedlist = codes.stream()
                 .skip(2)
                 .collect(Collectors.toList());
@@ -175,6 +174,13 @@ public class pStream {
         Stream<String> stream1 = Stream.of("A","B");
         Stream<String> stream2 = Stream.of("C","D");
         System.out.println(Stream.concat(stream1,stream2).collect(Collectors.toList()));
+
+        //intermediate operations
+
+
+        
+        // |------>stateless statefull
+        //Terminal Operations
 
 
 
